@@ -1,50 +1,90 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>我的个人主页</title>
-    <style>
-        body {
-            background-color: #f4f6f9;
-            text-align: center;
-            padding: 50px;
-            font-family: Arial, sans-serif;
-        }
-        .card {
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            display: inline-block;
-            max-width: 80%;
-        }
-        h1 {
-            color: #2c3e50;
-            margin-top: 0;
-        }
-        p {
-            color: #7f8c8d;
-            font-size: 18px;
-        }
-        img {
-            width: 100%;
-            max-width: 300px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-        .heart {
-            color: red;
-            font-size: 30px;
-            margin-top: 20px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>给你的专属秘密</title>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        flex-direction: column;
+        cursor: pointer;
+        overflow: hidden;
+    }
+
+    .heart {
+        color: red;
+        font-size: 80px;
+        animation: pulse 1.2s infinite;
+    }
+
+    .message-box {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        text-align: center;
+        display: none;
+        max-width: 80%;
+        width: 350px;
+        animation: popIn 0.5s ease;
+    }
+
+    .message-box h1 {
+        color: #e05670;
+        font-size: 24px;
+        margin-top: 0;
+    }
+
+    .message-box p {
+        color: #666;
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .hint {
+        color: white;
+        font-size: 14px;
+        margin-top: 20px;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+        100% { transform: scale(1); }
+    }
+
+    @keyframes popIn {
+        from { opacity: 0; transform: scale(0.8); }
+        to { opacity: 1; transform: scale(1); }
+    }
+</style>
 </head>
 <body>
-    <div class="card">
-        <h1>带土</h1>
-        <img src="https://via.placeholder.com/300" alt="我的照片">
-        <p>我喜欢你</p>
-        <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+    <div class="hint">点击屏幕解锁秘密...</div>
+    
+    <div class="message-box" id="secret">
+        <h1>致我最特别的你</h1>
+        <p>在这个庞大的数据世界里， 你是我唯一不想错过的那个 1。 愿你的每一天都如星河般璀璨。</p>
     </div>
+
+    <script>
+        document.body.addEventListener('click', function() {
+            var secret = document.getElementById('secret');
+            if (secret.style.display !== 'block') {
+                secret.style.display = 'block';
+                document.querySelector('.heart').style.display = 'none';
+                document.querySelector('.hint').style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
